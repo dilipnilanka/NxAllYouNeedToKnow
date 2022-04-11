@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@nrwl/react": "^13.10.0"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "root": "apps/business-profile-api",
+  "sourceRoot": "apps/business-profile-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/business-profile-api",
+        "main": "apps/business-profile-api/src/main.ts",
+        "tsConfig": "apps/business-profile-api/tsconfig.app.json",
+        "assets": ["apps/business-profile-api/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/business-profile-api/src/environments/environment.ts",
+              "with": "apps/business-profile-api/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "business-profile-api:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/business-profile-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/business-profile-api"],
+      "options": {
+        "jestConfig": "apps/business-profile-api/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

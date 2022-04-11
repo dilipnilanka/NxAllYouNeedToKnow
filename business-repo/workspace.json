@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "business-profile-api": "apps/business-profile-api",
+    "business-profile-react": "apps/business-profile-react",
+    "business-profile-react-e2e": "apps/business-profile-react-e2e",
+    "ui-header": "libs/ui-header"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "root": "apps/business-profile-react",
+  "sourceRoot": "apps/business-profile-react/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/business-profile-react",
+        "index": "apps/business-profile-react/src/index.html",
+        "baseHref": "/",
+        "main": "apps/business-profile-react/src/main.tsx",
+        "polyfills": "apps/business-profile-react/src/polyfills.ts",
+        "tsConfig": "apps/business-profile-react/tsconfig.app.json",
+        "assets": [
+          "apps/business-profile-react/src/favicon.ico",
+          "apps/business-profile-react/src/assets"
+        ],
+        "styles": ["apps/business-profile-react/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/business-profile-react/src/environments/environment.ts",
+              "with": "apps/business-profile-react/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "business-profile-react:build",
+        "hmr": true,
+        "proxyConfig": "apps/business-profile-react/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "business-profile-react:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/business-profile-react/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/business-profile-react"],
+      "options": {
+        "jestConfig": "apps/business-profile-react/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
